@@ -1,78 +1,3 @@
--- سكربت Delta Executor بواجهة مخصصة
-local MarketplaceService = game:GetService("MarketplaceService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerMouse = Player:GetMouse()
-
-local redzlib = {
-	Themes = {
-		Purple = {
-			["Color Hub 1"] = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 15, 30)),
-				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(40, 30, 60)),
-				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(20, 15, 30))
-			}),
-			["Color Hub 2"] = Color3.fromRGB(25, 20, 35),
-			["Color Stroke"] = Color3.fromRGB(60, 0, 100),
-			["Color Theme"] = Color3.fromRGB(140, 0, 255),
-			["Color Text"] = Color3.fromRGB(240, 240, 240),
-			["Color Dark Text"] = Color3.fromRGB(150, 150, 150)
-		}
-	},
-	Save = {
-		UISize = {550, 380},
-		TabSize = 160,
-		Theme = "Purple"
-	},
-	Settings = {},
-	Connection = {},
-	Instances = {},
-	Elements = {},
-	Options = {},
-	Flags = {},
-	Tabs = {}
-}
-
--- زر M لفتح وغلق الواجهة
-local ToggleButton = Instance.new("TextButton")
-ToggleButton.Name = "ToggleM"
-ToggleButton.Text = "M"
-ToggleButton.Font = Enum.Font.GothamBold
-ToggleButton.TextColor3 = Color3.fromRGB(140, 0, 255)
-ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ToggleButton.Size = UDim2.new(0, 50, 0, 50)
-ToggleButton.Position = UDim2.new(0, 50, 0, 50)
-ToggleButton.TextScaled = true
-ToggleButton.Parent = CoreGui
-ToggleButton.ClipsDescendants = true
-ToggleButton.AutoButtonColor = true
-ToggleButton.BorderSizePixel = 0
-ToggleButton.BackgroundTransparency = 0
-ToggleButton.ZIndex = 100
-ToggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
-ToggleButton.TextXAlignment = Enum.TextXAlignment.Center
-ToggleButton.TextYAlignment = Enum.TextYAlignment.Center
-local roundCorner = Instance.new("UICorner", ToggleButton)
-roundCorner.CornerRadius = UDim.new(1, 0)
-
-ToggleButton.MouseButton1Click:Connect(function()
-	local ui = CoreGui:FindFirstChild("Hub") -- اسم الواجهة حسب الملف الأصلي
-	if ui then
-		ui.Visible = not ui.Visible
-	end
-end)
-
--- باقي السكربت الأصلي كما هو بدون تعديل
--- سيتم دمج كودك الأصلي هنا بعد الزر والثيم الجديد
-
-
--- باقي السكربت:
-
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -128,7 +53,7 @@ local redzlib = {
 	Save = {
 		UISize = {550, 380},
 		TabSize = 160,
-		Theme = "Darker"
+		Theme = "Purple"
 	},
 	Settings = {},
 	Connection = {},
@@ -2777,3 +2702,33 @@ function redzlib:MakeWindow(Configs)
 end
 
 return redzlib
+
+
+-- زر M لفتح وغلق الواجهة
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Name = "ToggleM"
+ToggleButton.Text = "M"
+ToggleButton.Font = Enum.Font.GothamBold
+ToggleButton.TextColor3 = Color3.fromRGB(140, 0, 255)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ToggleButton.Size = UDim2.new(0, 50, 0, 50)
+ToggleButton.Position = UDim2.new(0, 50, 0, 50)
+ToggleButton.TextScaled = true
+ToggleButton.Parent = CoreGui
+ToggleButton.ClipsDescendants = true
+ToggleButton.AutoButtonColor = true
+ToggleButton.BorderSizePixel = 0
+ToggleButton.BackgroundTransparency = 0
+ToggleButton.ZIndex = 100
+ToggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
+ToggleButton.TextXAlignment = Enum.TextXAlignment.Center
+ToggleButton.TextYAlignment = Enum.TextYAlignment.Center
+local roundCorner = Instance.new("UICorner", ToggleButton)
+roundCorner.CornerRadius = UDim.new(1, 0)
+
+ToggleButton.MouseButton1Click:Connect(function()
+	local ui = CoreGui:FindFirstChild("Hub")
+	if ui then
+		ui.Enabled = not ui.Enabled
+	end
+end)
